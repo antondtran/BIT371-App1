@@ -1,22 +1,22 @@
 package com.example.app1;
 
 import androidx.appcompat.app.AppCompatActivity;
-import android.view.View;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class MainActivity extends AppCompatActivity {
+    private  final String[] cities = {"Seattle", "Bothell", "Kirkland", "Bellevue", "Lynnwood", "Renton", "Redmond", "Spokane", "Vancouver", "Tacoma", "Olympia", "Bellingham", "Arlington", "Everett", "Woodinville", "Monroe", "New Castle", "Ballard", "Lacey"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    }
-    public void sayHello(View view){
-        Log.i("INFO", "Hello Android!");
-        TextView tv = findViewById(R.id.textView);
-        tv.setText("Hello Android!");
 
+        ArrayAdapter<String> adapter;
+        adapter = new ArrayAdapter<>(this, R.layout.listview_layout, R.id.city, cities);
+        ListView lv = findViewById(R.id.cityList);
+        lv.setAdapter(adapter);
     }
+
 }
